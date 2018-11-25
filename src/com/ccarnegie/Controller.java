@@ -5,18 +5,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Random;
-import java.util.stream.IntStream;
 
 class Controller {
 	private BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	
 	Controller() {
-		Sorter sorter = new Sorter();
+		Integer userChoice;
 		Random rng = new Random();
+		Sorter sorter = new Sorter();
 		
 		boolean loop;
-		int userChoice, arraySize, minNumber, maxNumber;
-		int[] unsortedArray;
+		int arraySize, minNumber, maxNumber;
+		int[] sortingArray;
 		String yesOrNo;
 		
 		do {
@@ -41,23 +41,59 @@ class Controller {
 				System.out.print("What do you what the higher bound of your array to be: ");
 				maxNumber = getInteger(minNumber + 1, Integer.MAX_VALUE -1); //
 			}
-			unsortedArray = rng.ints(arraySize, minNumber, maxNumber).toArray();
+			sortingArray = rng.ints(arraySize, minNumber, maxNumber).toArray();
+			System.out.println("Array before sorting:");
+			System.out.println(Arrays.toString(sortingArray));
+			System.out.println();
 			
 			/* ----- Algorithm Choice ----- */
 			System.out.println("Which of the algorithms would you like to use?");
 			System.out.println("1: Insertion Sort");
 			System.out.println("2: Selection Sort");
-			System.out.println("0: Exit");
+			System.out.println("3: Merge Sort");
+			System.out.println("4: Heap Sort");
+			System.out.println("5: Quick Sort");
+			System.out.println("6: Shell Sort");
+			System.out.println("7: Bubble Sort");
+			System.out.println("8: Comb Sort");
+			System.out.println("9: Counting Sort");
+			System.out.println("10: Bucket Sort");
+			System.out.println("11: Radix Sort");
+			System.out.println("Any other numbers to exit");
+			userChoice = getInteger(1, 11);
 			
-			userChoice = getInteger(1, 2);
+			/* ----- Sorting the array ----- */
 			switch (userChoice) {
-				case 0:
-					loop = false;
 				case 1:
 					break;
 				case 2:
 					break;
+				case 3:
+					break;
+				case 4:
+					break;
+				case 5:
+					break;
+				case 6:
+					break;
+				case 7:
+					System.out.println("Bubble Sort -");
+					sorter.bubbleSort(sortingArray);
+					break;
+				case 8:
+					break;
+				case 9:
+					break;
+				case 10:
+					break;
+				case 11:
+					break;
+				default:
+					loop = false;
 			}
+			System.out.println("Array after sorting:");
+			System.out.println(Arrays.toString(sortingArray));
+			System.out.println();
 			
 		} while (loop);
 	}
